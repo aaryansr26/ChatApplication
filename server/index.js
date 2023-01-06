@@ -8,7 +8,7 @@ const server = http.createServer(app);
 const io = socketio(server);
 
 
-const PORT = process.env.PORT || 9999;
+const PORT = process.env.PORT || 5000;
 
 io.on('connection', (socket) => {
     console.log("We have got a new connection!!!");
