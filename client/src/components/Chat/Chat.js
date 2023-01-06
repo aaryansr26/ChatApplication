@@ -23,7 +23,7 @@ const Chat = () => {
         setRoom(room); 
         console.log(socket); 
 
-        socket.emit()
+        socket.emit('join', {name, room}); 
 
     }, [ENDPOINT, location.search]); 
 
