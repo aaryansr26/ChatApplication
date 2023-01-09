@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import qs from 'query-string'; 
 import io from 'socket.io-client';
 import { useLocation } from "react-router-dom";
+import './Chat.css'
 
 let socket; 
 
@@ -55,7 +56,7 @@ const Chat = () => {
     return (
         <div className="outerContainer">
             <div className="container">
-            <input value={message} onChange={(event) => setMessage(event.target.value)} onKeyDown={event => event.key==='Enter' ? sendMessage(event) : null} />
+            {/* <input value={message} onChange={(event) => setMessage(event.target.value)} onKeyDown={event => event.key==='Enter' ? sendMessage(event) : null} /> */}
             </div>
         </div>
     )
