@@ -14,8 +14,6 @@ const PORT = process.env.PORT || 5000;
 
 io.on('connection', (socket) => {
 
-    console.log("User has joined the server!")
-
     socket.on('join', ( {name, room} , callback) => {
 
         const {error, user} = addUser({ id : socket.id, name, room }); 
@@ -32,7 +30,7 @@ io.on('connection', (socket) => {
         callback(); 
     }); 
 
-    //event for message sending
+    //event for message sending 
     socket.on('sendMessage', (message, callback) =>{
         const user =  getUser(socket.id);
 
