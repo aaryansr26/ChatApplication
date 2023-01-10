@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 5000;
 
 io.on('connection', (socket) => {
 
-    socket.on('join', ( {name, room} , callback) => {
+    socket.on('join', ( {name, room} , callback) => { 
 
         const {error, user} = addUser({ id : socket.id, name, room }); 
         if(error) return callback(error); 
@@ -39,7 +39,10 @@ io.on('connection', (socket) => {
     })
 
     socket.on('disconnect', () => {
-        console.log("User has left!");
+        const user = removeUser(socket.id); 
+        if(user) {
+            io.to(user.room).emit('message', {user : 'admin', text: `${user.name} has left the chat!`}); 
+        }
     });
 });
 
