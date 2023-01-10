@@ -7,6 +7,7 @@ import './Chat.css'
 
 import Infobar from "../Infobar/Infobar.js"
 import Input from "../Input/Input.js"
+import Messages from "../Messages/Messages.js"
 
 let socket; 
 
@@ -61,7 +62,7 @@ const Chat = () => {
         <div className="outerContainer">
             <div className="container">
             <Infobar room={room}/>
-
+            <Messages messages = {messages} name = {name} />
             <Input message = {message} setMessage={setMessage} sendMessage = {sendMessage}/>
 
             </div>
