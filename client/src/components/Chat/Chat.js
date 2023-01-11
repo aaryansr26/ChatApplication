@@ -8,7 +8,7 @@ import './Chat.css'
 import Infobar from "../Infobar/Infobar.js"
 import Input from "../Input/Input.js"
 import Messages from "../Messages/Messages.js"
-import TextContainer from "../TextContainer/TextContainer";
+import TextContainer from "../TextContainer/TextContainer.js"
 
 let socket; 
 
@@ -20,6 +20,7 @@ const Chat = () => {
     const [room, setRoom] = useState(''); 
     const [message, setMessage] = useState(''); 
     const [messages, setMessages] = useState([]); 
+    const [users, setUsers] = useState([]); 
     const ENDPOINT = 'http://localhost:5000/'; 
 
     useEffect(() => {
@@ -47,6 +48,13 @@ const Chat = () => {
         })
     }, [messages]); 
 
+
+    useEffect(() => {
+        socket.on("roomData", ({ users }) => {
+            setUsers(users); 
+        })
+    }, []);
+
     //function for sending messages
 
     const sendMessage = (event) => {
@@ -67,8 +75,8 @@ const Chat = () => {
             <Input message = {message} setMessage={setMessage} sendMessage = {sendMessage}/>
 
             </div>
-            <TextContainer />
-        </div>
+            <TextContainer users = {users} />
+            </div>
     )
 }
 
