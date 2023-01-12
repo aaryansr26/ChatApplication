@@ -21,7 +21,7 @@ const Chat = () => {
     const [message, setMessage] = useState(''); 
     const [messages, setMessages] = useState([]); 
     const [users, setUsers] = useState([]); 
-    const ENDPOINT = 'https://chat-application-server-nu.vercel.app/'; 
+    const ENDPOINT = 'https://chat-application-server-c0tm.onrender.com/'
 
     useEffect(() => {
 
@@ -31,7 +31,6 @@ const Chat = () => {
 
         setName(name); 
         setRoom(room); 
-        console.log(socket); 
 
         socket.emit('join', {name, room}, (error) => {
             if(error) {
@@ -65,7 +64,6 @@ const Chat = () => {
         }
     }; 
 
-    console.log(message, messages); 
 
     return (
         <div className="outerContainer">
